@@ -20,9 +20,9 @@ library(caret)
 #----------------------------------------------------
 # TRAIN AND TEST SETS
 #----------------------------------------------------
-train_ori <- read.csv("training.csv")
-test_ori  <- read.csv("testing.csv")
-train_sta <- read.csv("trainingStatus.csv")
+train_ori <- read.csv("../data/training_values.csv")
+test_ori  <- read.csv("../data/test_values.csv")
+train_sta <- read.csv("../data/training_labels.csv")
 
 train_y <- train_sta$status_group
 train_y_rec <- ifelse(train_y == "functional", 0, ifelse( train_y == "non functional", 1, 2))
@@ -87,7 +87,7 @@ modFitRbo <-  train(
   minNode     = n_node,
   nTree       = no_trees,
   minInfo     = 0.01,
-  predProb    = 0.30
+  #predProb    = 0.30
 )
 
 modFitRbo
